@@ -1,20 +1,21 @@
+package scd.lab3;
+
 import java.util.Scanner;
 
-public class calculator {
+public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter first number: ");
         double num1 = scanner.nextDouble();
 
-        System.out.println("Enter an operator (+, -, *, /): ");
+        System.out.println("Enter an operator (+, -, *, /, %, ^): ");
         char operator = scanner.next().charAt(0);
 
         System.out.println("Enter second number: ");
         double num2 = scanner.nextDouble();
 
         double result = 0;
-
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -30,8 +31,15 @@ public class calculator {
                     result = num1 / num2;
                 } else {
                     System.out.println("Error: Division by zero is not allowed.");
+                    scanner.close();
                     return;
                 }
+                break;
+            case '%':
+                result = num1 % num2;
+                break;
+            case '^':
+                result = Math.pow(num1, num2);
                 break;
             default:
                 System.out.println("Invalid operator!");
